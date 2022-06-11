@@ -3,15 +3,15 @@ function computerPlay(max) {
 
     if (result == 0) {
          let result = "rock";
-        console.log("Computer chose rock");
+        console.log("Computer chose rock!");
         return result;
     } else if (result == 1) {
         let result = "paper";
-        console.log("Computer chose paper");
+        console.log("Computer chose paper!");
         return result;
     } else {
         let result = "scissors";
-        console.log("Computer chose scissors");
+        console.log("Computer chose scissors!");
         return result;
     }
 
@@ -24,15 +24,23 @@ function playerSelection() {
     playerChoice = playerChoice.toLowerCase();
     return playerChoice;
 }
+//prompts the player to input a choice
 
 const playerPick = playerSelection();
 const computerPick = computerPlay(3);
 
 function playRound(playerPick, computerPick) {
-    if (playerPick === computerPick) {
-        return "You both chose the same answer!";
+    if ((playerPick && computerPick) === ("rock" && "paper")) {
+        return "Paper beats rock!";
+    } else if ((playerPick && computerPick) === ("rock" && "scissors")) {
+        return "Rock beats Paper!";
+    } else if ((playerPick && computerPick) === ("paper" && "scissors")) {
+        return "Scissors beats Paper!";
+    } else {
+        return "You both picked " + playerPick + "!";
     }
 }
+//takes input from the player and computer and declares a winner
 
 
 console.log(playRound(playerPick, computerPick));
