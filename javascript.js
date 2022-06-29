@@ -42,5 +42,15 @@ function playRound(playerPick, computerPick) {
 }
 //takes input from the player and computer and declares a winner
 
+const bodyMain = document.querySelector('body');
+const resultsDiv = document.createElement('div');
+resultsDiv.classList.add('results');
+const resultsAnswer = document.createElement('h2');
 
-console.log(playRound(playerPick, computerPick));
+bodyMain.appendChild(resultsDiv);
+resultsDiv.appendChild(resultsAnswer);
+
+const btn = document.querySelector('.btn');
+btn.addEventListener('click', () => {
+    playRound(playerPick, computerPick);
+});

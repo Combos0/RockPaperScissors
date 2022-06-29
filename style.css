@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+    background-color: #011638;
+}
+
+h1 {
+    color: #dff8eb;
+    text-align: center;
+    font-size: 24px;
+    padding: 20px;
+}
+
+#wrapper {
+    margin: 0;
+    padding: 50px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn {
+    background-color: #CDCDCD;
+    color: #011638;
+    font-weight: 900;
+    border: #364156 solid 6px;
+    border-radius: 16px;
+    padding: 16px;
+}
+
+.results {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
