@@ -1,3 +1,20 @@
+const bodyMain = document.querySelector('body');
+const resultsDiv = document.createElement('div');
+resultsDiv.classList.add('results');
+const resultsAnswer = document.createElement('h2');
+const resultsScore = document .createElement('h3');
+
+bodyMain.appendChild(resultsDiv);
+resultsDiv.appendChild(resultsAnswer);
+resultsDiv.appendChild(resultsScore);
+
+const playerROCK = document.querySelector('#ROCK');
+const playerPAPER = document.querySelector('#PAPER');
+const playerSCISSORS = document.querySelector('#SCISSORS');
+
+let playerScore = 0;
+let computerScore = 0;
+
 function computerPlay(max) {
     const result = Math.floor(Math.random() * max);
 
@@ -15,42 +32,47 @@ function computerPlay(max) {
         return result;
     }
 
-} 
+};
+
 //gets a random choice for the computer
 
-function playerSelection() {
-    let playerChoice = prompt("Lets play! Choose Rock, Paper, or Scissors.");
-    console.log("You chose " + playerChoice + "!");
-    playerChoice = playerChoice.toLowerCase();
-    return playerChoice;
-}
-//prompts the player to input a choice
-
-const playerPick = playerSelection();
-const computerPick = computerPlay(3);
-
-function playRound(playerPick, computerPick) {
-    if ((playerPick && computerPick) === ("rock" && "paper")) {
-        return "Paper beats rock!";
-    } else if ((playerPick && computerPick) === ("rock" && "scissors")) {
-        return "Rock beats Paper!";
-    } else if ((playerPick && computerPick) === ("paper" && "scissors")) {
-        return "Scissors beats Paper!";
-    } else {
-        return "You both picked " + playerPick + "!";
-    }
-}
-//takes input from the player and computer and declares a winner
-
-const bodyMain = document.querySelector('body');
-const resultsDiv = document.createElement('div');
-resultsDiv.classList.add('results');
-const resultsAnswer = document.createElement('h2');
-
-bodyMain.appendChild(resultsDiv);
-resultsDiv.appendChild(resultsAnswer);
-
-const btn = document.querySelector('.btn');
-btn.addEventListener('click', () => {
-    playRound(playerPick, computerPick);
+playerROCK.addEventListener('click', () => {
+    pickedRock();
+    updatesScore();
+    checksWinner();
 });
+
+playerPAPER.addEventListener('click', () => {
+    //pickedPaper();
+});
+
+playerSCISSORS.addEventListener('click', () => {
+    //pickedScissors();
+});
+
+function pickedRock() {
+    switch (computerPlay(3)) {
+        case "paper":
+            resultsAnswer.textContent = 'Paper beats rock, You loose!';
+            computerScore++
+            break;
+        case "scissors":
+            resultsAnswer.textContent = 'Rock beats scissors, you win!';
+            playerScore++;
+            break;
+        default:
+            resultsAnswer.textContent = 'You tied with Rock!';
+    };
+};
+
+function updatesScore() {
+    resultsScore.textContent = `${playerScore} : ${computerScore}`;
+}
+
+function checksWinner() {
+    if (playerScore === 5) {
+        resultsScore.textContent = 'You have beaten the computer!';
+    } else if (computerScore === 5) {
+        resultsScore.textContent = 'You lost to the computer!';
+    };
+};
