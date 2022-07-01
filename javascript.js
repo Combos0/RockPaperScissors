@@ -43,11 +43,15 @@ playerROCK.addEventListener('click', () => {
 });
 
 playerPAPER.addEventListener('click', () => {
-    //pickedPaper();
+    pickedPaper();
+    updatesScore();
+    checksWinner();
 });
 
 playerSCISSORS.addEventListener('click', () => {
-    //pickedScissors();
+    pickedScissors();
+    updatesScore();
+    checksWinner();
 });
 
 function pickedRock() {
@@ -62,6 +66,36 @@ function pickedRock() {
             break;
         default:
             resultsAnswer.textContent = 'You tied with Rock!';
+    };
+};
+
+function pickedPaper() {
+    switch (computerPlay(3)) {
+        case "scissors":
+            resultsAnswer.textContent = 'Scissors beats paper, You loose!';
+            computerScore++
+            break;
+        case "rock":
+            resultsAnswer.textContent = 'paper beats rock, you win!';
+            playerScore++;
+            break;
+        default:
+            resultsAnswer.textContent = 'You tied with paper!';
+    };
+};
+
+function pickedScissors() {
+    switch (computerPlay(3)) {
+        case "rock":
+            resultsAnswer.textContent = 'Rock beats scissors, You loose!';
+            computerScore++
+            break;
+        case "paper":
+            resultsAnswer.textContent = 'scissors beats paper, you win!';
+            playerScore++;
+            break;
+        default:
+            resultsAnswer.textContent = 'You tied with scissors!';
     };
 };
 
